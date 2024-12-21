@@ -95,12 +95,77 @@ export default {
   margin-right: auto;
 }
 
+@media screen and (max-width: 768px) {
+  .scores-section {
+    padding: 15px;
+    max-width: 450px;
+  }
+
+  .scores-table {
+    font-size: 0.9em;
+  }
+
+  .scores-table th,
+  .scores-table td {
+    padding: 8px 4px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scores-section {
+    padding: 12px;
+    max-width: none;
+    width: 95%;
+  }
+
+  .judge-name {
+    font-size: 1.5em;
+  }
+
+  .scores-table {
+    font-size: 0.75em;
+  }
+
+  .scores-table th {
+    font-size: 0.8em;
+    padding: 6px 2px;
+  }
+
+  .scores-table td {
+    font-size: 0.8em;
+    padding: 6px 2px;
+  }
+
+  .scores-table td:first-child {
+    font-size: 0.8em;
+  }
+
+  .total-scores {
+    padding: 12px;
+  }
+
+  .total-scores h3 {
+    font-size: 1.3em;
+  }
+
+  .points-info {
+    font-size: 0.8em;
+  }
+
+  .country-name {
+    font-size: 0.9em;
+  }
+
+  .country-points {
+    font-size: 1em;
+  }
+}
+
 @media screen and (max-width: 375px) {
   .scores-section {
     margin-top: 20px;
     padding: 8px;
     width: 100%;
-    max-width: none;
   }
 
   .judge-name {
@@ -109,24 +174,24 @@ export default {
   }
 
   .scores-table {
-    font-size: 0.7em;
+    font-size: 0.65em;
     margin-bottom: 15px;
   }
 
   .scores-table th {
-    padding: 4px 2px;
-    font-size: 0.8em;
+    padding: 4px 1px;
+    font-size: 0.7em;
   }
 
   .scores-table td {
-    padding: 4px 2px;
-    font-size: 0.8em;
+    padding: 4px 1px;
+    font-size: 0.7em;
   }
 
   .scores-table td:first-child {
-    font-size: 0.8em;
-    padding-left: 2px;
-    padding-right: 2px;
+    font-size: 0.7em;
+    padding-left: 1px;
+    padding-right: 1px;
   }
 
   .total-scores {
@@ -142,7 +207,6 @@ export default {
   .points-info {
     font-size: 0.7em;
     margin-bottom: 8px;
-    line-height: 1.3;
   }
 
   .country-total {
