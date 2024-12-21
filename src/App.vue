@@ -197,6 +197,8 @@ export default {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Modak&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
 
 .winter-background {
   min-height: 100vh;
@@ -213,7 +215,7 @@ export default {
 }
 
 .gingerbread-text {
-  font-family: "Fredoka", sans-serif;
+  font-family: "Titan One", cursive;
   font-size: 4.2em;
   background: linear-gradient(45deg, #8b4513, #a0522d);
   -webkit-background-clip: text;
@@ -222,18 +224,19 @@ export default {
   letter-spacing: 1px;
   margin-bottom: 20px;
   transition: transform 0.3s ease;
-  font-weight: 700;
-  -webkit-text-stroke: 2px #8b4513;
+  -webkit-text-stroke: 1px #8b4513;
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 768px) {
   .gingerbread-text {
     font-size: 3.2em;
-    -webkit-text-stroke: 1.5px #8b4513;
+    -webkit-text-stroke: 0.4px #8b4513;
   }
 
   .year-text {
     font-size: 2.8em;
+    -webkit-text-stroke: 0.4px #ff0000;
   }
 
   .theme-text {
@@ -244,13 +247,12 @@ export default {
 @media screen and (max-width: 480px) {
   .gingerbread-text {
     font-size: 2.8em;
-    -webkit-text-stroke: 1.2px #8b4513;
-    margin-bottom: 15px;
+    -webkit-text-stroke: 0.3px #8b4513;
   }
 
   .year-text {
     font-size: 2.2em;
-    -webkit-text-stroke: 1.2px #ff0000;
+    -webkit-text-stroke: 0.3px #ff0000;
   }
 
   .theme-text {
@@ -261,14 +263,12 @@ export default {
 @media screen and (max-width: 375px) {
   .gingerbread-text {
     font-size: 2.4em;
-    -webkit-text-stroke: 1px #8b4513;
-    margin-bottom: 12px;
+    -webkit-text-stroke: 0.2px #8b4513;
   }
 
   .year-text {
     font-size: 2em;
-    -webkit-text-stroke: 1px #ff0000;
-    margin-top: 5px;
+    -webkit-text-stroke: 0.2px #ff0000;
   }
 
   .theme-text {
@@ -293,18 +293,18 @@ export default {
 }
 
 .year-text {
-  font-family: "Fredoka", sans-serif;
+  font-family: "Titan One", cursive;
   font-size: 3.6em;
   background: linear-gradient(45deg, #ff0000, #ff4d4d);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 4px;
-  font-weight: 700;
-  -webkit-text-stroke: 1.5px #ff0000;
+  -webkit-text-stroke: 1px #ff0000;
   transform: scale(1.1);
   margin-top: 10px;
   transition: transform 0.3s ease;
+  opacity: 0.9;
 }
 
 .year-text:hover {
@@ -317,10 +317,9 @@ export default {
 }
 
 .theme-text {
-  font-family: "Fredoka", sans-serif;
+  font-family: "Modak", cursive;
   font-size: 1.8em;
   color: white;
-  font-weight: 700;
   letter-spacing: 1px;
   transition: transform 0.3s ease;
   display: inline-block;
