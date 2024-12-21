@@ -13,60 +13,26 @@
       <div class="gingerbread-text">Gingerbread House Competition</div>
       <div class="year-text">2024</div>
       
-      <div class="scores-section">
-        <h2 class="judge-name">Keely</h2>
-        <table class="scores-table">
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>1st Place</th>
-              <th>2nd Place</th>
-              <th>3rd Place</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Technical</td>
-              <td>Brazil</td>
-              <td>Switzerland</td>
-              <td>Egypt</td>
-            </tr>
-            <tr>
-              <td>Creativity</td>
-              <td>Switzerland</td>
-              <td>Egypt</td>
-              <td>Brazil</td>
-            </tr>
-            <tr>
-              <td>Appearance</td>
-              <td>Switzerland</td>
-              <td>Egypt</td>
-              <td>Brazil</td>
-            </tr>
-            <tr>
-              <td>Best Overall</td>
-              <td>Switzerland</td>
-              <td>Brazil</td>
-              <td>Egypt</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="total-scores">
-          <h3>Total Scores</h3>
-          <div class="points-info">Points: 1st Place (3 pts), 2nd Place (2 pts), 3rd Place (1 pt)</div>
-          <div v-for="score in totalScores" :key="score.country" class="country-total">
-            <span class="country-name">{{ score.country }}</span>
-            <span class="country-points">{{ score.points }} points</span>
-          </div>
-        </div>
+      <div class="judges-container">
+        <ScoreCard
+          v-for="(judgeScores, judgeName) in judgesScores"
+          :key="judgeName"
+          :judge-name="judgeName"
+          :scores="judgeScores"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ScoreCard from './components/ScoreCard.vue'
+
 export default {
   name: 'App',
+  components: {
+    ScoreCard
+  },
   data() {
     return {
       snowflakes: [],
@@ -76,39 +42,20 @@ export default {
       baseSpeed: 20,
       generationInterval: null,
       isGenerating: false,
-      scores: {
-        Technical: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
-        Creativity: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
-        Appearance: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
-        'Best Overall': { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' }
-      },
-      pointValues: {
-        '1st': 3,
-        '2nd': 2,
-        '3rd': 1
+      judgesScores: {
+      'Keely': {
+          Technical: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
+          Creativity: { '1st': 'Egypt', '2nd': 'Brazil', '3rd': 'Switzerland' },
+          Appearance: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
+          'Best Overall': { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' }
+        },
+        'Ethan': {
+          Technical: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
+          Creativity: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
+          Appearance: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
+          'Best Overall': { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' }
+        },
       }
-    }
-  },
-  computed: {
-    totalScores() {
-      const totals = {
-        Brazil: 0,
-        Switzerland: 0,
-        Egypt: 0
-      };
-
-      Object.entries(this.scores).forEach(([, places]) => {
-        Object.entries(places).forEach(([place, country]) => {
-          totals[country] += this.pointValues[place];
-        });
-      });
-
-      return Object.entries(totals)
-        .map(([country, points]) => ({
-          country,
-          points
-        }))
-        .sort((a, b) => b.points - a.points);
     }
   },
   methods: {
@@ -210,6 +157,8 @@ export default {
   color: #2c3e50;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
 .winter-background {
   min-height: 100vh;
   background: linear-gradient(135deg, #a8c5e8 0%, #c7ddf5 100%);
@@ -294,129 +243,10 @@ export default {
   animation-name: fall;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
-
-.scores-section {
-  margin-top: 40px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.judge-name {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 2em;
-  color: #8B4513;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.scores-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-bottom: 20px;
-}
-
-.scores-table th,
-.scores-table td {
-  padding: 10px;
-  text-align: center;
-  font-family: 'Fredoka', sans-serif;
-  border: 2px solid #e1e1e1;
-}
-
-.scores-table th {
-  background: linear-gradient(45deg, #c68b59, #dba17c);
-  color: white;
-  font-weight: 600;
-  font-size: 1.1em;
-}
-
-.scores-table td {
-  font-size: 1em;
-  color: #2c3e50;
-}
-
-.scores-table tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
-.scores-table tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-.scores-table tr:hover {
-  background-color: rgba(198, 139, 89, 0.1);
-}
-
-.scores-table td:first-child {
-  font-weight: 800;
-  font-size: 1.2em;
-  color: #2c3e50;
-  background-color: rgba(255, 255, 255, 0.95);
-}
-
-.scores-table tr:hover td:first-child {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.scores-table th:first-child {
-  border: 1px solid #e1e1e1;
-}
-
-.scores-table td {
-  font-size: 1em;
-  color: #2c3e50;
-  border: 1px solid #e1e1e1;
-}
-
-.total-scores {
-  margin-top: 30px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.total-scores h3 {
-  color: #2c3e50;
-  margin-bottom: 15px;
-  font-family: 'Fredoka', sans-serif;
-  font-size: 1.5em;
-}
-
-.points-info {
-  font-size: 0.9em;
-  color: #666;
-  margin-bottom: 15px;
-  font-style: italic;
-}
-
-.country-total {
+.judges-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 40px;
   align-items: center;
-  padding: 8px 15px;
-  margin: 5px 0;
-  background: rgba(198, 139, 89, 0.1);
-  border-radius: 8px;
-  font-family: 'Fredoka', sans-serif;
-}
-
-.country-name {
-  font-weight: 600;
-  font-size: 1.1em;
-  color: #2c3e50;
-}
-
-.country-points {
-  font-weight: 700;
-  font-size: 1.2em;
-  color: #c68b59;
 }
 </style>
