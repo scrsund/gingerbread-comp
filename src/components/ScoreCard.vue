@@ -13,23 +13,20 @@
       <tbody>
         <tr v-for="(places, category) in scores" :key="category">
           <td>{{ category }}</td>
-          <td>{{ places["1st"] }}</td>
-          <td>{{ places["2nd"] }}</td>
-          <td>{{ places["3rd"] }}</td>
+          <td :class="{ 'switzerland-cell': places['1st'] === 'Switzerland' }">{{ places["1st"] }}</td>
+          <td :class="{ 'switzerland-cell': places['2nd'] === 'Switzerland' }">{{ places["2nd"] }}</td>
+          <td :class="{ 'switzerland-cell': places['3rd'] === 'Switzerland' }">{{ places["3rd"] }}</td>
         </tr>
       </tbody>
     </table>
     <div class="total-scores">
       <h3>Total Scores</h3>
-      <!-- <div class="points-info">
-        Points: 1st Place (3 pts), 2nd Place (2 pts), 3rd Place (1 pt)
-      </div> -->
       <div
         v-for="score in totalScores"
         :key="score.country"
         class="country-total"
       >
-        <span class="country-name">{{ score.country }}</span>
+        <span class="country-name" :class="{ 'switzerland-text': score.country === 'Switzerland' }">{{ score.country }}</span>
         <span class="country-points">{{ score.points }} points</span>
       </div>
     </div>
@@ -159,15 +156,6 @@ export default {
   .country-points {
     font-size: 1em;
   }
-
-  .switzerland-cell {
-    font-size: 0.65em !important;
-    letter-spacing: -0.2px;
-  }
-
-  .switzerland-text {
-    font-size: 0.85em !important;
-  }
 }
 
 @media screen and (max-width: 375px) {
@@ -203,42 +191,33 @@ export default {
     padding-right: 1px;
   }
 
-  .total-scores {
-    margin-top: 15px;
-    padding: 8px;
-  }
-
-  .total-scores h3 {
-    font-size: 1.1em;
-    margin-bottom: 8px;
-  }
-
-  .points-info {
-    font-size: 0.7em;
-    margin-bottom: 8px;
-  }
-
-  .country-total {
-    padding: 6px 8px;
-    margin: 4px 0;
-  }
-
-  .country-name {
-    font-size: 0.8em;
-  }
-
-  .country-points {
-    font-size: 0.9em;
-  }
-
   .switzerland-cell {
-    font-size: 0.6em !important;
-    letter-spacing: -0.3px;
+    font-size: 0.55em !important;
+    letter-spacing: -0.4px;
+    padding: 4px 0 !important;
   }
 
   .switzerland-text {
-    font-size: 0.8em !important;
-    letter-spacing: -0.2px;
+    font-size: 0.75em !important;
+    letter-spacing: -0.3px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .scores-table td {
+    padding: 3px 0;
+    font-size: 0.65em;
+  }
+
+  .switzerland-cell {
+    font-size: 0.5em !important;
+    letter-spacing: -0.5px;
+    padding: 3px 0 !important;
+  }
+
+  .switzerland-text {
+    font-size: 0.7em !important;
+    letter-spacing: -0.4px;
   }
 }
 
