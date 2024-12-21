@@ -1,18 +1,20 @@
 <template>
   <div class="winter-background">
     <div class="snowflakes" aria-hidden="true">
-      <div 
-        v-for="snowflake in snowflakes" 
-        :key="snowflake.id" 
+      <div
+        v-for="snowflake in snowflakes"
+        :key="snowflake.id"
         class="snowflake"
         :style="snowflake.style"
         @animationend="removeSnowflake(snowflake.id)"
-      >{{ snowflake.char }}</div>
+      >
+        {{ snowflake.char }}
+      </div>
     </div>
     <div class="content">
       <div class="gingerbread-text">Gingerbread House Competition</div>
       <div class="year-text">2024</div>
-      
+
       <div class="theme-section">
         <div class="theme-text">Theme: Countries</div>
       </div>
@@ -31,14 +33,14 @@
 </template>
 
 <script>
-import ScoreCard from './components/ScoreCard.vue'
-import OverallResults from './components/OverallResults.vue'
+import ScoreCard from "./components/ScoreCard.vue";
+import OverallResults from "./components/OverallResults.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     ScoreCard,
-    OverallResults
+    OverallResults,
   },
   data() {
     return {
@@ -50,45 +52,63 @@ export default {
       generationInterval: null,
       isGenerating: false,
       judgesScores: {
-        'Keely': {
-          Technical: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
-          Creativity: { '1st': 'Egypt', '2nd': 'Brazil', '3rd': 'Switzerland' },
-          Appearance: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
-          'Best Overall': { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' }
+        Keely: {
+          Technical: { "1st": "Brazil", "2nd": "Switzerland", "3rd": "Egypt" },
+          Creativity: { "1st": "Egypt", "2nd": "Brazil", "3rd": "Switzerland" },
+          Appearance: { "1st": "Switzerland", "2nd": "Egypt", "3rd": "Brazil" },
+          "Best Overall": {
+            "1st": "Switzerland",
+            "2nd": "Brazil",
+            "3rd": "Egypt",
+          },
         },
-        'Ethan': {
-          Technical: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
-          Creativity: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
-          Appearance: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
-          'Best Overall': { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' }
+        Ethan: {
+          Technical: { "1st": "Brazil", "2nd": "Switzerland", "3rd": "Egypt" },
+          Creativity: { "1st": "Switzerland", "2nd": "Egypt", "3rd": "Brazil" },
+          Appearance: { "1st": "Switzerland", "2nd": "Egypt", "3rd": "Brazil" },
+          "Best Overall": {
+            "1st": "Switzerland",
+            "2nd": "Brazil",
+            "3rd": "Egypt",
+          },
         },
-        'Kattis': {
-          Technical: { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' },
-          Creativity: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
-          Appearance: { '1st': 'Egypt', '2nd': 'Brazil', '3rd': 'Switzerland' },
-          'Best Overall': { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' }
+        Kattis: {
+          Technical: { "1st": "Switzerland", "2nd": "Brazil", "3rd": "Egypt" },
+          Creativity: { "1st": "Brazil", "2nd": "Switzerland", "3rd": "Egypt" },
+          Appearance: { "1st": "Egypt", "2nd": "Brazil", "3rd": "Switzerland" },
+          "Best Overall": {
+            "1st": "Egypt",
+            "2nd": "Switzerland",
+            "3rd": "Brazil",
+          },
         },
-        'Fegge': {
-          Technical: { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' },
-          Creativity: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
-          Appearance: { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' },
-          'Best Overall': { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' }
-        }
-      }
-    }
+        Fegge: {
+          Technical: { "1st": "Egypt", "2nd": "Switzerland", "3rd": "Brazil" },
+          Creativity: { "1st": "Brazil", "2nd": "Switzerland", "3rd": "Egypt" },
+          Appearance: { "1st": "Egypt", "2nd": "Switzerland", "3rd": "Brazil" },
+          "Best Overall": {
+            "1st": "Egypt",
+            "2nd": "Switzerland",
+            "3rd": "Brazil",
+          },
+        },
+      },
+    };
   },
   methods: {
     getAvailableColumn() {
       const now = Date.now();
       const availableColumns = Array.from({ length: this.columns })
         .map((_, i) => i)
-        .filter(col => {
+        .filter((col) => {
           const lastSpawn = this.columnStatus[col] || 0;
           return now - lastSpawn > 2500;
         });
-      
+
       if (availableColumns.length === 0) return null;
-      return availableColumns[Math.floor(Math.random() * availableColumns.length)];
+      return availableColumns[
+        Math.floor(Math.random() * availableColumns.length)
+      ];
     },
     createSnowflake() {
       const column = this.getAvailableColumn();
@@ -104,34 +124,34 @@ export default {
       const duration = this.baseSpeed + speedVariation;
 
       const style = {
-        '--fall-duration': `${duration}s`,
-        'left': `${position}%`,
+        "--fall-duration": `${duration}s`,
+        left: `${position}%`,
       };
-      
+
       this.columnStatus[column] = Date.now();
-      
+
       return {
         id,
         style,
-        char: id % 2 === 0 ? '❅' : '❆',
-        column
+        char: id % 2 === 0 ? "❅" : "❆",
+        column,
       };
     },
     addSnowflake() {
       if (this.isGenerating) return;
-      
+
       const snowflake = this.createSnowflake();
       if (snowflake) {
         this.snowflakes.push(snowflake);
         this.isGenerating = true;
-        
+
         setTimeout(() => {
           this.isGenerating = false;
         }, 500);
       }
     },
     removeSnowflake(id) {
-      const index = this.snowflakes.findIndex(s => s.id === id);
+      const index = this.snowflakes.findIndex((s) => s.id === id);
       if (index !== -1) {
         this.snowflakes.splice(index, 1);
         setTimeout(() => {
@@ -156,15 +176,15 @@ export default {
       if (this.generationInterval) {
         clearInterval(this.generationInterval);
       }
-    }
+    },
   },
   mounted() {
     this.startSnowfall();
   },
   beforeUnmount() {
     this.stopSnowfall();
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -176,7 +196,7 @@ export default {
   color: #2c3e50;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap");
 
 .winter-background {
   min-height: 100vh;
@@ -193,9 +213,9 @@ export default {
 }
 
 .gingerbread-text {
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
   font-size: 3.6em;
-  background: linear-gradient(45deg, #8B4513, #A0522D);
+  background: linear-gradient(45deg, #8b4513, #a0522d);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -203,7 +223,7 @@ export default {
   margin-bottom: 20px;
   transition: transform 0.3s ease;
   font-weight: 700;
-  -webkit-text-stroke: 2px #8B4513;
+  -webkit-text-stroke: 2px #8b4513;
 }
 
 .gingerbread-text:hover {
@@ -211,7 +231,7 @@ export default {
 }
 
 .year-text {
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
   font-size: 3.6em;
   background: linear-gradient(45deg, #ff0000, #ff4d4d);
   -webkit-background-clip: text;
@@ -235,7 +255,7 @@ export default {
 }
 
 .theme-text {
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
   font-size: 2.4em;
   color: white;
   font-weight: 700;
@@ -247,7 +267,7 @@ export default {
 }
 
 .theme-text::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -5px;
