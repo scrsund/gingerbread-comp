@@ -1,6 +1,6 @@
 <template>
   <div class="scores-section">
-    <h2 class="judge-name">{{ judgeName }}</h2>
+    <h2 class="judge-name">{{ displayName }}</h2>
     <table class="scores-table">
       <thead>
         <tr>
@@ -13,23 +13,20 @@
       <tbody>
         <tr v-for="(places, category) in scores" :key="category">
           <td>{{ category }}</td>
-          <td>{{ places["1st"] }}</td>
-          <td>{{ places["2nd"] }}</td>
-          <td>{{ places["3rd"] }}</td>
+          <td :class="{ 'switzerland-cell': places['1st'] === 'Switzerland' }">{{ places["1st"] }}</td>
+          <td :class="{ 'switzerland-cell': places['2nd'] === 'Switzerland' }">{{ places["2nd"] }}</td>
+          <td :class="{ 'switzerland-cell': places['3rd'] === 'Switzerland' }">{{ places["3rd"] }}</td>
         </tr>
       </tbody>
     </table>
     <div class="total-scores">
       <h3>Total Scores</h3>
-      <!-- <div class="points-info">
-        Points: 1st Place (3 pts), 2nd Place (2 pts), 3rd Place (1 pt)
-      </div> -->
       <div
         v-for="score in totalScores"
         :key="score.country"
         class="country-total"
       >
-        <span class="country-name">{{ score.country }}</span>
+        <span class="country-name" :class="{ 'switzerland-text': score.country === 'Switzerland' }">{{ score.country }}</span>
         <span class="country-points">{{ score.points }} points</span>
       </div>
     </div>
@@ -59,6 +56,9 @@ export default {
     };
   },
   computed: {
+    displayName() {
+      return this.judgeName.charAt(0).toUpperCase() + this.judgeName.slice(1);
+    },
     totalScores() {
       const totals = {
         Brazil: 0,

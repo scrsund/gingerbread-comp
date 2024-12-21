@@ -92,6 +92,16 @@ export default {
             "3rd": "Brazil",
           },
         },
+        Amadeus: {
+          Technical: { "1st": "Brazil", "2nd": "Egypt", "3rd": "Switzerland" },
+          Creativity: { "1st": "Switzerland", "2nd": "Brazil", "3rd": "Egypt" },
+          Appearance: { "1st": "Egypt", "2nd": "Brazil", "3rd": "Switzerland" },
+          "Best Overall": {
+            "1st": "Brazil",
+            "2nd": "Egypt",
+            "3rd": "Switzerland",
+          },
+        },
       },
     };
   },
