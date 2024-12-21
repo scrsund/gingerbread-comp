@@ -13,6 +13,10 @@
       <div class="gingerbread-text">Gingerbread House Competition</div>
       <div class="year-text">2024</div>
       
+      <div class="theme-section">
+        <div class="theme-text">Theme: Countries</div>
+      </div>
+
       <div class="judges-container">
         <ScoreCard
           v-for="(judgeScores, judgeName) in judgesScores"
@@ -20,6 +24,7 @@
           :judge-name="judgeName"
           :scores="judgeScores"
         />
+        <OverallResults :judges-scores="judgesScores" />
       </div>
     </div>
   </div>
@@ -27,11 +32,13 @@
 
 <script>
 import ScoreCard from './components/ScoreCard.vue'
+import OverallResults from './components/OverallResults.vue'
 
 export default {
   name: 'App',
   components: {
-    ScoreCard
+    ScoreCard,
+    OverallResults
   },
   data() {
     return {
@@ -43,7 +50,7 @@ export default {
       generationInterval: null,
       isGenerating: false,
       judgesScores: {
-      'Keely': {
+        'Keely': {
           Technical: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
           Creativity: { '1st': 'Egypt', '2nd': 'Brazil', '3rd': 'Switzerland' },
           Appearance: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
@@ -55,6 +62,18 @@ export default {
           Appearance: { '1st': 'Switzerland', '2nd': 'Egypt', '3rd': 'Brazil' },
           'Best Overall': { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' }
         },
+        'Kattis': {
+          Technical: { '1st': 'Switzerland', '2nd': 'Brazil', '3rd': 'Egypt' },
+          Creativity: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
+          Appearance: { '1st': 'Egypt', '2nd': 'Brazil', '3rd': 'Switzerland' },
+          'Best Overall': { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' }
+        },
+        'Fegge': {
+          Technical: { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' },
+          Creativity: { '1st': 'Brazil', '2nd': 'Switzerland', '3rd': 'Egypt' },
+          Appearance: { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' },
+          'Best Overall': { '1st': 'Egypt', '2nd': 'Switzerland', '3rd': 'Brazil' }
+        }
       }
     }
   },
@@ -208,6 +227,39 @@ export default {
 
 .year-text:hover {
   transform: scale(1.15);
+}
+
+.theme-section {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.theme-text {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.4em;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-text:hover {
+  transform: scale(1.05);
 }
 
 .snowflake {
