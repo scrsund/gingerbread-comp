@@ -95,6 +95,70 @@ export default {
   margin-right: auto;
 }
 
+@media screen and (max-width: 375px) {
+  .scores-section {
+    margin-top: 20px;
+    padding: 8px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .judge-name {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+
+  .scores-table {
+    font-size: 0.7em;
+    margin-bottom: 15px;
+  }
+
+  .scores-table th {
+    padding: 4px 2px;
+    font-size: 0.8em;
+  }
+
+  .scores-table td {
+    padding: 4px 2px;
+    font-size: 0.8em;
+  }
+
+  .scores-table td:first-child {
+    font-size: 0.8em;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .total-scores {
+    margin-top: 15px;
+    padding: 8px;
+  }
+
+  .total-scores h3 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+  }
+
+  .points-info {
+    font-size: 0.7em;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .country-total {
+    padding: 6px 8px;
+    margin: 4px 0;
+  }
+
+  .country-name {
+    font-size: 0.8em;
+  }
+
+  .country-points {
+    font-size: 0.9em;
+  }
+}
+
 .judge-name {
   font-family: "Fredoka", sans-serif;
   font-size: 2em;
@@ -108,14 +172,17 @@ export default {
   border-collapse: separate;
   border-spacing: 0;
   margin-bottom: 20px;
+  table-layout: fixed;
 }
 
 .scores-table th,
 .scores-table td {
-  padding: 10px;
+  padding: 10px 5px;
   text-align: center;
   font-family: "Fredoka", sans-serif;
-  border: 2px solid #e1e1e1;
+  border: 1px solid #e1e1e1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .scores-table th {
@@ -128,16 +195,17 @@ export default {
 .scores-table td {
   font-size: 1em;
   color: #2c3e50;
-  border: 1px solid #e1e1e1;
-  padding: 10px;
-  text-align: center;
-  font-family: "Fredoka", sans-serif;
 }
 
 .scores-table td:first-child {
   font-weight: 800;
-  font-size: 1.2em;
-  color: #2c3e50;
+  font-size: 1.1em;
+  width: 28%;
+}
+
+.scores-table th:not(:first-child),
+.scores-table td:not(:first-child) {
+  width: 24%;
 }
 
 .scores-table tr {

@@ -81,7 +81,7 @@ export default {
 
 .overall-title {
   font-family: 'Fredoka', sans-serif;
-  font-size: 2.5em;
+  font-size: 3em;
   color: #8B4513;
   margin-bottom: 30px;
   font-weight: 700;
@@ -139,19 +139,46 @@ export default {
 }
 
 .country-name {
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: 600;
   color: #2c3e50;
   flex-grow: 1;
 }
 
 .total-points {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 700;
   color: #2c3e50;
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 375px) {
+  .overall-results {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .overall-title {
+    font-size: 2em;
+    margin-bottom: 12px;
+  }
+
+  .country-name {
+    font-size: 1.4em;
+  }
+
+  .total-points {
+    font-size: 0.9em;
+  }
+
+  .place-badge {
+    font-size: 0.9em;
+    padding: 6px 12px;
+    margin-right: 12px;
+  }
 }
 </style> 

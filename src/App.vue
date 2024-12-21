@@ -214,7 +214,7 @@ export default {
 
 .gingerbread-text {
   font-family: "Fredoka", sans-serif;
-  font-size: 3.6em;
+  font-size: 4.2em;
   background: linear-gradient(45deg, #8b4513, #a0522d);
   -webkit-background-clip: text;
   background-clip: text;
@@ -224,6 +224,36 @@ export default {
   transition: transform 0.3s ease;
   font-weight: 700;
   -webkit-text-stroke: 2px #8b4513;
+}
+
+@media screen and (max-width: 375px) {
+  .gingerbread-text {
+    font-size: 2.4em;
+    -webkit-text-stroke: 1px #8b4513;
+    margin-bottom: 15px;
+  }
+
+  .year-text {
+    font-size: 2.4em;
+    -webkit-text-stroke: 1px #ff0000;
+    margin-top: 5px;
+  }
+
+  .theme-text {
+    font-size: 1.4em;
+  }
+
+  .content {
+    padding-top: 20px;
+  }
+
+  .winter-background {
+    padding: 10px;
+  }
+
+  .judges-container {
+    gap: 20px;
+  }
 }
 
 .gingerbread-text:hover {
@@ -256,7 +286,7 @@ export default {
 
 .theme-text {
   font-family: "Fredoka", sans-serif;
-  font-size: 2.4em;
+  font-size: 1.8em;
   color: white;
   font-weight: 700;
   letter-spacing: 1px;
