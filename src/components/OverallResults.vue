@@ -3,12 +3,12 @@
     <h2 class="overall-title">Final Results</h2>
     <div class="final-scores">
       <div
-        v-for="score in sortedTotalScores"
+        v-for="(score, index) in sortedTotalScores"
         :key="score.country"
         class="final-country-score"
-        :class="getPlaceClass(score)"
+        :class="getPlaceClass(index)"
       >
-        <div class="place-badge">{{ getPlaceText(score) }}</div>
+        <div class="place-badge">{{ getPlaceText(index) }}</div>
         <span class="country-name">{{ score.country }}</span>
         <span class="total-points">{{ score.points }} points</span>
       </div>
@@ -51,36 +51,21 @@ export default {
         });
       });
 
-      // Sort scores and handle ties
-      const scores = Object.entries(totals)
+      return Object.entries(totals)
         .map(([country, points]) => ({
           country,
           points,
-          place: 0, // Initialize place
         }))
         .sort((a, b) => b.points - a.points);
-
-      // Assign places handling ties
-      let currentPlace = 1;
-      for (let i = 0; i < scores.length; i++) {
-        if (i > 0 && scores[i].points === scores[i - 1].points) {
-          scores[i].place = scores[i - 1].place;
-        } else {
-          scores[i].place = currentPlace;
-        }
-        currentPlace++;
-      }
-
-      return scores;
     },
   },
   methods: {
-    getPlaceClass(score) {
-      return `place-${score.place}`;
+    getPlaceClass(index) {
+      return `place-${index + 1}`;
     },
-    getPlaceText(score) {
+    getPlaceText(index) {
       const places = ["1st", "2nd", "3rd"];
-      return places[score.place - 1];
+      return places[index];
     },
   },
 };
@@ -133,7 +118,7 @@ export default {
   }
 
   .country-name {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 
   .total-points {
@@ -163,7 +148,7 @@ export default {
   }
 
   .country-name {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
 
   .total-points {
@@ -265,7 +250,7 @@ export default {
 }
 
 .country-name {
-  font-size: 1.4em;
+  font-size: 1.6em;
   font-weight: 600;
   color: #2c3e50;
   flex-grow: 1;
