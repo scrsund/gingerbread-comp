@@ -21,9 +21,9 @@
     </table>
     <div class="total-scores">
       <h3>Total Scores</h3>
-      <div class="points-info">
+      <!-- <div class="points-info">
         Points: 1st Place (3 pts), 2nd Place (2 pts), 3rd Place (1 pt)
-      </div>
+      </div> -->
       <div
         v-for="score in totalScores"
         :key="score.country"
