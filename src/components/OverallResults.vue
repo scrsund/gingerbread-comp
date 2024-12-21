@@ -74,14 +74,14 @@ export default {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  max-width: 800px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .overall-title {
   font-family: 'Fredoka', sans-serif;
-  font-size: 3em;
+  font-size: 2.6em;
   color: #8B4513;
   margin-bottom: 30px;
   font-weight: 700;
@@ -133,13 +133,13 @@ export default {
   padding: 8px 16px;
   border-radius: 20px;
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: 1em;
   margin-right: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .country-name {
-  font-size: 2em;
+  font-size: 1.6em;
   font-weight: 600;
   color: #2c3e50;
   flex-grow: 1;
