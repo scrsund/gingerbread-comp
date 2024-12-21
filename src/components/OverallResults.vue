@@ -118,7 +118,7 @@ export default {
   }
 
   .country-name {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   .total-points {
@@ -148,7 +148,7 @@ export default {
   }
 
   .country-name {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
   .total-points {
@@ -250,7 +250,7 @@ export default {
 }
 
 .country-name {
-  font-size: 1.6em;
+  font-size: 1.4em;
   font-weight: 600;
   color: #2c3e50;
   flex-grow: 1;
