@@ -226,11 +226,43 @@ export default {
   -webkit-text-stroke: 2px #8b4513;
 }
 
+@media screen and (max-width: 768px) {
+  .gingerbread-text {
+    font-size: 3.2em;
+    -webkit-text-stroke: 1.5px #8b4513;
+  }
+
+  .year-text {
+    font-size: 3em;
+  }
+
+  .theme-text {
+    font-size: 1.6em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gingerbread-text {
+    font-size: 2.8em;
+    -webkit-text-stroke: 1.2px #8b4513;
+    margin-bottom: 15px;
+  }
+
+  .year-text {
+    font-size: 2.6em;
+    -webkit-text-stroke: 1.2px #ff0000;
+  }
+
+  .theme-text {
+    font-size: 1.5em;
+  }
+}
+
 @media screen and (max-width: 375px) {
   .gingerbread-text {
     font-size: 2.4em;
     -webkit-text-stroke: 1px #8b4513;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .year-text {

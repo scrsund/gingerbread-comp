@@ -155,20 +155,54 @@ export default {
   margin-left: 20px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 768px) {
   .overall-results {
-    margin-top: 20px;
-    padding: 10px;
-    width: 100%;
+    margin-top: 40px;
+    padding: 25px;
+    width: 90%;
   }
 
   .overall-title {
-    font-size: 2em;
-    margin-bottom: 12px;
+    font-size: 2.6em;
+    margin-bottom: 25px;
+  }
+
+  .final-country-score {
+    padding: 15px;
   }
 
   .country-name {
-    font-size: 1.4em;
+    font-size: 1.6em;
+  }
+
+  .total-points {
+    font-size: 1em;
+  }
+
+  .place-badge {
+    font-size: 1em;
+    padding: 6px 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .overall-results {
+    margin-top: 30px;
+    padding: 20px;
+    width: 95%;
+  }
+
+  .overall-title {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+  }
+
+  .final-country-score {
+    padding: 12px;
+  }
+
+  .country-name {
+    font-size: 1.3em;
   }
 
   .total-points {
@@ -177,8 +211,45 @@ export default {
 
   .place-badge {
     font-size: 0.9em;
-    padding: 6px 12px;
+    padding: 6px 10px;
     margin-right: 12px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .overall-results {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .overall-title {
+    font-size: 1.8em;
+    margin-bottom: 12px;
+  }
+
+  .final-country-score {
+    padding: 8px;
+  }
+
+  .country-name {
+    font-size: 0.95em;
+  }
+
+  .total-points {
+    font-size: 0.8em;
+    padding: 4px 6px;
+    margin-left: 8px;
+  }
+
+  .place-badge {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    margin-right: 8px;
+  }
+
+  .final-scores {
+    gap: 8px;
   }
 }
 </style> 
