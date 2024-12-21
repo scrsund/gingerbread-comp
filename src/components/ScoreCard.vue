@@ -1,6 +1,6 @@
 <template>
   <div class="scores-section">
-    <h2 class="judge-name">{{ judgeName }}</h2>
+    <h2 class="judge-name">{{ displayName }}</h2>
     <table class="scores-table">
       <thead>
         <tr>
@@ -79,6 +79,15 @@ export default {
         }))
         .sort((a, b) => b.points - a.points);
     },
+    displayName() {
+      return this.judgeName.charAt(0).toUpperCase() + this.judgeName.slice(1);
+    },
+    categories() {
+      return Object.keys(this.scores).map(category => ({
+        name: category.charAt(0).toUpperCase() + category.slice(1),
+        scores: this.scores[category]
+      }));
+    }
   },
 };
 </script>

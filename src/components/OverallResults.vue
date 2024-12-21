@@ -3,12 +3,12 @@
     <h2 class="overall-title">Final Results</h2>
     <div class="final-scores">
       <div
-        v-for="(score, index) in sortedTotalScores"
+        v-for="score in sortedTotalScores"
         :key="score.country"
         class="final-country-score"
-        :class="getPlaceClass(index)"
+        :class="getPlaceClass(score)"
       >
-        <div class="place-badge">{{ getPlaceText(index) }}</div>
+        <div class="place-badge">{{ getPlaceText(score) }}</div>
         <span class="country-name">{{ score.country }}</span>
         <span class="total-points">{{ score.points }} points</span>
       </div>
@@ -51,21 +51,36 @@ export default {
         });
       });
 
-      return Object.entries(totals)
+      // Sort scores and handle ties
+      const scores = Object.entries(totals)
         .map(([country, points]) => ({
           country,
           points,
+          place: 0, // Initialize place
         }))
         .sort((a, b) => b.points - a.points);
+
+      // Assign places handling ties
+      let currentPlace = 1;
+      for (let i = 0; i < scores.length; i++) {
+        if (i > 0 && scores[i].points === scores[i - 1].points) {
+          scores[i].place = scores[i - 1].place;
+        } else {
+          scores[i].place = currentPlace;
+        }
+        currentPlace++;
+      }
+
+      return scores;
     },
   },
   methods: {
-    getPlaceClass(index) {
-      return `place-${index + 1}`;
+    getPlaceClass(score) {
+      return `place-${score.place}`;
     },
-    getPlaceText(index) {
+    getPlaceText(score) {
       const places = ["1st", "2nd", "3rd"];
-      return places[index];
+      return places[score.place - 1];
     },
   },
 };
