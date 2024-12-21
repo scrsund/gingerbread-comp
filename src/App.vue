@@ -233,7 +233,7 @@ export default {
   }
 
   .year-text {
-    font-size: 3em;
+    font-size: 2.8em;
   }
 
   .theme-text {
@@ -249,7 +249,7 @@ export default {
   }
 
   .year-text {
-    font-size: 2.6em;
+    font-size: 2.2em;
     -webkit-text-stroke: 1.2px #ff0000;
   }
 
@@ -266,7 +266,7 @@ export default {
   }
 
   .year-text {
-    font-size: 2.4em;
+    font-size: 2em;
     -webkit-text-stroke: 1px #ff0000;
     margin-top: 5px;
   }
