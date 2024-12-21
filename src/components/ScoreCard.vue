@@ -161,25 +161,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 400px) {
-  .scores-table td {
-    padding: 4px 1px;
-    font-size: 0.7em;
-  }
-
-  .scores-table td:not(:first-child) {
-    font-size: 0.65em;
-  }
-
-  .switzerland-cell {
-    font-size: 0.45em !important;
-    letter-spacing: -0.5px;
-    padding: 4px 0 !important;
-    word-spacing: -1px;
-  }
-}
-
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 480px) {
   .scores-section {
     margin-top: 20px;
     padding: 8px;
@@ -212,11 +194,32 @@ export default {
     padding-right: 1px;
   }
 
-  .switzerland-cell {
-    font-size: 0.45em !important;
-    letter-spacing: -0.5px;
-    padding: 4px 0 !important;
-    word-spacing: -1px;
+  .total-scores {
+    margin-top: 15px;
+    padding: 8px;
+  }
+
+  .total-scores h3 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+  }
+
+  .points-info {
+    font-size: 0.7em;
+    margin-bottom: 8px;
+  }
+
+  .country-total {
+    padding: 6px 8px;
+    margin: 4px 0;
+  }
+
+  .country-name {
+    font-size: 0.8em;
+  }
+
+  .country-points {
+    font-size: 0.9em;
   }
 }
 
